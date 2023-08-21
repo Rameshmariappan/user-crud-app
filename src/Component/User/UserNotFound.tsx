@@ -1,6 +1,17 @@
-import { Box } from "@mui/material";
-import GroupIcon from "@mui/icons-material/Group";
-const UserNotFound = () => {
+import { Box, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+const UserNotFound = ({
+  icon,
+  primary,
+  secondary,
+  from,
+}: {
+  icon: React.ReactNode;
+  primary: string;
+  secondary?: string;
+  from: string;
+}) => {
+  const navigate = useNavigate();
   return (
     <Box
       sx={{
@@ -10,14 +21,24 @@ const UserNotFound = () => {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        gap:"1rem"
+        gap: "1rem",
       }}
     >
-      <Box>
-        <GroupIcon fontSize="large" />
-      </Box>
-      <Box sx={{ fontSize: "26px",fontWeight:500 }}>No users found!</Box>
-      <Box sx={{ fontSize: "20px",fontWeight:500 }}>If u want to create a new user click add user button!</Box>
+      <Box>{icon}</Box>
+      <Box sx={{ fontSize: "26px", fontWeight: 500 }}>{primary}</Box>
+      {secondary && (
+        <Box sx={{ fontSize: "20px", fontWeight: 500 }}>{secondary}</Box>
+      )}
+      {from === "pagenotfound" && (
+        <Button
+          variant="contained"
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          Go home!
+        </Button>
+      )}
     </Box>
   );
 };

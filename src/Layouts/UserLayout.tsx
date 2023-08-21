@@ -28,7 +28,7 @@ const UserLayout = () => {
           </Box>
         </Box>
       ) : (
-        <Navigate to={"/auth/login"} />
+        <Navigate to={"/"} />
       )}
     </>
   );

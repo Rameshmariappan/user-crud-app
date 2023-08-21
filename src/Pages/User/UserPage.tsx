@@ -5,6 +5,8 @@ import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
 import UserPopup from "../../Component/User/UserPopup";
 import { useGetUsersQuery } from "../../api/UserPageApiSlice";
 import UserNotFound from "../../Component/User/UserNotFound";
+import GroupIcon from "@mui/icons-material/Group";
+
 const UserPage = () => {
   const [openUserPopup, setUserPopup] = useState(false);
   const { data: post } = useGetUsersQuery();
@@ -30,7 +32,12 @@ const UserPage = () => {
       {post && post.length > 0 ? (
         <UserTable data={post} />
       ) : (
-        <UserNotFound />
+        <UserNotFound
+          icon={<GroupIcon fontSize="large" />}
+          primary="User not found!"
+          secondary="If u want to create a new user click add user button!"
+          from="user"
+        />
       )}
       {openUserPopup && (
         <UserPopup

@@ -38,6 +38,9 @@ const closedMixin = (theme: Theme): CSSObject => ({
   }),
   overflowX: "hidden",
   width: `calc(${theme.spacing(7)} + 1px)`,
+  [theme.breakpoints.down("sm")]: {
+    width: `0px`,
+  },
   [theme.breakpoints.up("sm")]: {
     width: `calc(${theme.spacing(8)} + 1px)`,
   },
@@ -46,8 +49,8 @@ const closedMixin = (theme: Theme): CSSObject => ({
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
-  justifyContent: "flex-end",
-  padding: theme.spacing(0, 1),
+  justifyContent: "center",
+  padding: theme.spacing(0, 3),
   ...theme.mixins.toolbar,
 }));
 
@@ -55,10 +58,14 @@ interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
 }
 
-const AppBar = styled(MuiAppBar, {
+export const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
 })<AppBarProps>(({ theme, open }) => ({
   zIndex: theme.zIndex.drawer + 1,
+  [theme.breakpoints.down("sm")]: {
+    width: "100%",
+    right: "8px",
+  },
   transition: theme.transitions.create(["width", "margin"], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
@@ -118,25 +125,18 @@ export default function MiniDrawer() {
             edge="start"
             sx={{
               marginRight: 5,
-              ...(SideBarOpen && { display: "none" }),
             }}
           >
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Sciflare employee tracking
+            User tracking
           </Typography>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={SideBarOpen}>
         <DrawerHeader>
-          <IconButton onClick={handleDrawerOpen}>
-            {theme.direction === "rtl" ? (
-              <ChevronRightIcon />
-            ) : (
-              <ChevronLeftIcon />
-            )}
-          </IconButton>
+          <Box sx={{fontSize:"40px",fontWeight:800}}>Sciflare</Box>
         </DrawerHeader>
         <Divider />
         <List>

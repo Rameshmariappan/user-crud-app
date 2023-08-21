@@ -30,9 +30,7 @@ const AppRoutes = () => {
     <Suspense fallback={<Loading />}>
       <Routes key={location.pathname} location={location}>
         <Route path="/" element={<AuthenticationLayout />}>
-          <Route path="auth">
-            <Route path="login" element={<Login />} />
-          </Route>
+          <Route path="" element={<Login />} />
         </Route>
         <Route path="user" element={<UserLayout />}>
           <Route path="listing" element={<UserPage />} />
