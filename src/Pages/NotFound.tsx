@@ -1,4 +1,3 @@
-import { Box } from "@mui/material";
 import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
 import UserNotFound from "../Component/User/UserNotFound";
 const NotFound = () => {
