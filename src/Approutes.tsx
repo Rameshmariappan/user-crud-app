@@ -1,9 +1,46 @@
-import React from 'react'
+import React, { Suspense } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 
-const Approutes = () => {
+import { Box, CircularProgress } from "@mui/material";
+import AuthenticationLayout from "./Layouts/AuthenticationLayout";
+import Login from "./Pages/Auth/Login";
+import UserLayout from "./Layouts/UserLayout";
+import UserPage from "./Pages/User/UserPage";
+import NotFound from "./Pages/NotFound";
+
+const Loading = () => {
   return (
-    <div>Approutes</div>
-  )
-}
+    <Box
+      sx={{
+        width: "100%",
+        height: "100vh",
+        display: "grid",
+        placeContent: "center",
+      }}
+    >
+      <CircularProgress size={"5rem"} sx={{ color: "#6e8b3d" }} />
+    </Box>
+  );
+};
 
-export default Approutes
+const AppRoutes = () => {
+  const location = useLocation();
+
+  return (
+    <Suspense fallback={<Loading />}>
+      <Routes key={location.pathname} location={location}>
+        <Route path="/" element={<AuthenticationLayout />}>
+          <Route path="auth">
+            <Route path="login" element={<Login />} />
+          </Route>
+        </Route>
+        <Route path="user" element={<UserLayout />}>
+          <Route path="listing" element={<UserPage />} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Suspense>
+  );
+};
+
+export default AppRoutes;
