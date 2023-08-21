@@ -1,5 +1,4 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import type { RootState } from "../app/store";
 import { userDataType } from "../@types/userTypes";
 
 const API_BASE_URL = import.meta.env.VITE_APP_SAR_API_BASE_URL;

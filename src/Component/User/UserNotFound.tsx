@@ -1,5 +1,4 @@
 import { Box } from "@mui/material";
-import React from "react";
 import GroupIcon from "@mui/icons-material/Group";
 const UserNotFound = () => {
   return (

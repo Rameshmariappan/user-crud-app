@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 
 import { Box, CircularProgress } from "@mui/material";

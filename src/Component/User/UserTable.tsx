@@ -1,4 +1,3 @@
-import * as React from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -13,10 +12,11 @@ import { Box, IconButton } from "@mui/material";
 import { useDeleteUserMutation } from "../../api/UserPageApiSlice";
 import UserPopup from "./UserPopup";
 import toast from "react-hot-toast";
+import { useState } from "react";
 export default function UserTable({ data }: { data: userDataType[] }) {
   const [deleteUser] = useDeleteUserMutation();
-  const [openUserPopup, setUserPopup] = React.useState(false);
-  const [userId, setUserId] = React.useState<number>(0);
+  const [openUserPopup, setUserPopup] = useState(false);
+  const [userId, setUserId] = useState<number>(0);
 
   const closePopup = () => {
     setUserPopup(false);

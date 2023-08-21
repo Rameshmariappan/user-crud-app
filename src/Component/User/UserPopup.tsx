@@ -11,7 +11,7 @@ import { makeStyles } from "@mui/styles";
 import { styled } from "@mui/material/styles";
 import React, { useEffect, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
-import { popupType } from "../../@types/userTypes";
+import { popupType, userDataType } from "../../@types/userTypes";
 import {
   useAddNewUserMutation,
   useGetSingleUserQuery,
@@ -84,7 +84,7 @@ const UserPopup = ({ open, action, closePopup, initialValues }: popupType) => {
   const [addUser] = useAddNewUserMutation();
   const [updateUser] = useUpdateUserMutation();
   const [isLoading, setIsLoading] = useState(false);
-  const { data: post } = initialValues
+  const { data: post }: { data?: userDataType } = initialValues
     ? useGetSingleUserQuery(initialValues)
     : {};
   const [particularUserData, setParticularUserData] = useState<{

@@ -1,4 +1,3 @@
-import React from "react";
 import { Box } from "@mui/material";
 import MiniDrawer from "../Component/User/MiniDrawer";
 import { Navigate, Outlet } from "react-router-dom";
